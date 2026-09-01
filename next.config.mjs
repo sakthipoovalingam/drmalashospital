@@ -1,7 +1,9 @@
-/** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "export",
+  trailingSlash: true,
+  basePath: "/drmalashospital",
+  assetPrefix: "/drmalashospital/",
   poweredByHeader: false,
-  reactStrictMode: true,
 };
 
 export default nextConfig;
