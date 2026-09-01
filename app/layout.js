@@ -1,9 +1,9 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Dr. Arjun Kumar | Advanced Cardiac Care",
+  title: "Dr.Muthu Karthikeyan | Advanced Ortho Care",
   description:
-    "Consult Dr. Arjun Kumar for advanced cardiac care, preventive cardiology and minimally invasive heart treatments.",
+    "Consult Dr.Muthu Karthikeyan Advanced Ortho Care.",
 };
 
 export default function RootLayout({ children }) {
