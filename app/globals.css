@@ -623,3 +623,11 @@ body { font-size: 16px; line-height: 1.6; }
 @keyframes modalIn { from { opacity: 0; transform: translateY(14px) scale(.98); } to { opacity: 1; transform: none; } }
 @media (max-width: 800px) { .modal-body { padding: 22px 22px 28px; } .modal-body p { font-size: 16px; } }
 @media (prefers-reduced-motion: reduce) { .modal, .modal-backdrop { animation: none; } }
+
+/* ===== Fix stat cards on tablet/phone: beat the older odd/even padding rules ===== */
+.stats-row .stat,
+.stats-row .stat:first-child,
+.stats-row .stat:nth-child(odd),
+.stats-row .stat:nth-child(2) { padding: 22px 20px 22px 94px; border: 1px solid #c8c8c8; border-radius: 30px; }
+.stats-row .stat-location { padding: 22px 24px; border: 1px solid #c8c8c8; border-radius: 30px; justify-content: flex-start; }
+@media (max-width: 800px) { .stats-row { gap: 14px; } }
