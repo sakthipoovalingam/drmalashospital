@@ -588,3 +588,21 @@ body { font-size: 16px; line-height: 1.6; }
   .hero-description, .doctor-details > p, .visit-grid > div:first-child > p { font-size: 16px; }
   .approach-points { font-size: 12px; }
 }
+
+/* ===== Hero illustration, selection colour, footnote row ===== */
+::selection { color: #fff; background: #d71e00; }
+.hero-inner { grid-template-columns: 1.05fr .95fr; align-items: center; }
+.hero-art { position: relative; justify-self: end; width: min(100%, 440px); aspect-ratio: 480 / 560; }
+.knee-svg { display: block; width: 100%; height: 100%; filter: drop-shadow(0 24px 40px rgba(0,0,0,.35)); }
+.hero-art-chip { position: absolute; left: -18px; bottom: 28px; display: flex; align-items: center; gap: 10px; padding: 12px 18px; border-radius: 30px; background: #fff; color: #58595b; font-size: 14px; font-weight: 600; box-shadow: 0 10px 30px rgba(0,0,0,.25); }
+.hero-art-chip .caption-cross { color: #d71e00; font-size: 18px; }
+.hero-footnote { align-items: center; font-size: 13px; font-weight: 500; letter-spacing: .02em; text-transform: none; }
+.hero-footnote span { display: inline-flex; align-items: center; gap: 10px; }
+.hero-footnote b { margin: 0; font-size: 18px; line-height: 1; }
+.hero-pagination { gap: 14px; }
+.hero-pagination button { font-size: 14px; font-weight: 600; min-width: 0; gap: 10px; }
+@media (max-width: 800px) {
+  .hero-inner { grid-template-columns: 1fr; }
+  .hero-art { justify-self: center; width: min(78vw, 320px); }
+  .hero-art-chip { left: 0; bottom: 14px; font-size: 13px; }
+}

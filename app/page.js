@@ -94,6 +94,42 @@ function SectionLabel({ number, children, light = false }) {
   );
 }
 
+
+function KneeIllustration() {
+  return (
+    <svg className="knee-svg" viewBox="0 0 480 560" role="img" aria-label="Illustration of a knee joint showing femur, patella, ligaments and tibia">
+      <defs>
+        <linearGradient id="boneGrad" x1="0" y1="0" x2="1" y2="1">
+          <stop offset="0" stopColor="#fbf6ee" />
+          <stop offset="1" stopColor="#d9cfc2" />
+        </linearGradient>
+        <radialGradient id="jointGlow" cx="50%" cy="50%" r="50%">
+          <stop offset="0" stopColor="#d71e00" stopOpacity=".55" />
+          <stop offset="1" stopColor="#d71e00" stopOpacity="0" />
+        </radialGradient>
+      </defs>
+      <circle cx="240" cy="300" r="205" fill="none" stroke="#fff" strokeOpacity=".16" />
+      <circle cx="240" cy="300" r="165" fill="none" stroke="#fff" strokeOpacity=".22" strokeDasharray="4 7" />
+      <circle cx="240" cy="305" r="120" fill="url(#jointGlow)" />
+      {/* femur */}
+      <path d="M188 0 L292 0 C294 120 302 170 332 214 C358 254 332 292 290 294 C266 296 252 282 240 270 C228 282 214 296 190 294 C148 292 122 254 148 214 C178 170 186 120 188 0 Z" fill="url(#boneGrad)" />
+      {/* tibia */}
+      <path d="M146 322 C190 312 290 312 334 322 C346 325 346 342 334 352 C322 402 312 472 310 560 L170 560 C168 472 158 402 146 352 C134 342 134 325 146 322 Z" fill="url(#boneGrad)" />
+      {/* fibula */}
+      <path d="M338 350 C350 352 356 362 354 376 C352 440 350 500 350 560 L326 560 C326 500 328 430 330 372 C330 360 332 352 338 350 Z" fill="#e9dfd2" />
+      {/* menisci */}
+      <path d="M146 304 C160 292 214 292 232 304 C214 318 160 322 146 304 Z" fill="#c9b8a6" />
+      <path d="M248 304 C266 292 320 292 334 304 C320 322 266 318 248 304 Z" fill="#c9b8a6" />
+      {/* cruciate ligaments */}
+      <path d="M222 284 L258 328" stroke="#d71e00" strokeWidth="7" strokeLinecap="round" />
+      <path d="M258 284 L222 328" stroke="#a31700" strokeWidth="7" strokeLinecap="round" />
+      {/* patella */}
+      <ellipse cx="240" cy="236" rx="40" ry="50" fill="#f3eadd" stroke="#bfae9b" strokeWidth="3" />
+      <ellipse cx="240" cy="236" rx="24" ry="32" fill="none" stroke="#d9cdbd" strokeWidth="2" />
+    </svg>
+  );
+}
+
 export default function Home() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
@@ -154,7 +190,11 @@ export default function Home() {
               ))}
             </div>
           </div>
-          <div className="hero-footnote"><span>01 — PERSONALIZED ORTHOPAEDIC CARE</span><span>SCROLL TO EXPLORE <b>↓</b></span></div>
+          <div className="hero-art" aria-hidden="false">
+            <KneeIllustration />
+            <div className="hero-art-chip"><span className="caption-cross">✚</span><span>Knee and joint care</span></div>
+          </div>
+          <div className="hero-footnote"><span>Personalized orthopaedic care</span><span>Scroll to explore <b>↓</b></span></div>
         </div>
       </section>
 
