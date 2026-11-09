@@ -60,11 +60,26 @@ export default function Home() {
 
       <section className="services section-pad" id="services"><div className="section-kicker">02 / WHAT WE TREAT</div><div className="services-head"><h2>COMPREHENSIVE<br /><em>ORTHOPAEDIC</em><br />SERVICES.</h2><p>From joint pain to injury recovery, our team offers a range of orthopaedic services with treatment plans tailored to individual needs.</p></div><div className="service-list">{treatments.map((t) => <article className="service-item" key={t.n}><span className="service-number">{t.n}</span><div><h3>{t.title}</h3><p>{t.detail}</p></div><span className="service-arrow" aria-hidden="true">↗</span></article>)}</div></section>
 
-      <section className="feature section-pad"><div className="feature-copy"><div className="section-kicker">A CLOSER LOOK</div><h2>FOCUSED ON<br /><em>KNEE & JOINT</em><br />HEALTH.</h2><p>Whether you are managing persistent knee pain, arthritis or a mobility concern, our goal is to help you understand your treatment options and make informed decisions about your care.</p><a className="text-link" href="#contact">Ask about a consultation <span aria-hidden="true">↗</span></a></div><div><img
-            src="/drmalashospital/knee-joint-care.png"
-            alt="Knee joint care consultation with a medical view of the knee anatomy"
-            style={{ width: "100%", height: "auto", display: "block", objectFit: "cover", border: "1px solid rgba(20,44,44,.16)" }}
-          /></div></section>
+      <section
+        aria-label="Knee and joint care"
+        style={{
+          padding: "clamp(32px, 6vw, 72px) clamp(16px, 6vw, 110px)",
+          background: "#e4e9df",
+        }}
+      >
+        <img
+          src="/drmalashospital/knee-joint-care.webp"
+          alt="Knee / Joint Care — comprehensive care for knees and joints"
+          loading="lazy"
+          style={{
+            display: "block",
+            width: "100%",
+            maxWidth: "1536px",
+            height: "auto",
+            margin: "0 auto",
+          }}
+        />
+      </section>
 
       <section className="why section-pad" id="why-us"><div className="section-kicker">03 / WHY CHOOSE US</div><div className="why-grid"><div><h2>CARE THAT<br />PUTS <em>YOU</em><br />FIRST.</h2><ImagePlaceholder label="Patient Care / Rehabilitation" number="04" /></div><div className="why-content"><p className="lead">Why patients across Manapparai choose Dr. Mala Hospital</p><div className="reason-list">{reasons.map((r, i) => <div className="reason" key={r}><span>{String(i + 1).padStart(2, "0")}</span><strong>{r}</strong><span aria-hidden="true">+</span></div>)}</div><p>Our goal is to help patients receive timely, appropriate orthopaedic treatment without unnecessary long-distance travel.</p></div></div></section>
 
