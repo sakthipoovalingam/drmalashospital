@@ -1,11 +1,16 @@
 import "./globals.css";
 
 export const metadata = {
-  title: "Dr Mala Hospital | Orthopaedic Care in Manapparai",
-  description: "Dr. Mala Hospital in Manapparai offers orthopaedic care, knee replacement, spine and back pain treatment, fracture care, sports injury treatment and arthritis care.",
+  title: "Dr.Malas Hospital | Orthopaedic & Joint Care in Manapparai",
+  description:
+    "Dr.Malas Hospital in Manapparai provides orthopaedic care, knee replacement surgery, spine and back pain treatment, sports injury and ligament care, fracture care and arthritis treatment.",
   robots: { index: true, follow: true },
 };
 
 export default function RootLayout({ children }) {
-  return <html lang="en"><body>{children}</body></html>;
+  return (
+    <html lang="en">
+      <body>{children}</body>
+    </html>
+  );
 }
