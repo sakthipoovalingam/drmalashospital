@@ -39,6 +39,8 @@ const treatments = [
     label: "KNEE & JOINT CARE",
     title: "Knee Replacement Surgery",
     copy: "Evaluation and surgical treatment options for advanced knee conditions and mobility concerns.",
+    image: "/drmalashospital/knee-joint-care.webp",
+    imageAlt: "For every step. For every move. Knee and joint care",
   },
   {
     number: "02",
@@ -133,6 +135,7 @@ function KneeIllustration() {
 export default function Home() {
   const [activeSlide, setActiveSlide] = useState(0);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [activeTreatment, setActiveTreatment] = useState(null);
   const currentSlide = heroSlides[activeSlide];
   const closeMenu = () => setMenuOpen(false);
 
@@ -142,6 +145,18 @@ export default function Home() {
     }, 6200);
     return () => window.clearInterval(timer);
   }, []);
+
+  useEffect(() => {
+    if (!activeTreatment) return undefined;
+    const onKey = (event) => { if (event.key === "Escape") setActiveTreatment(null); };
+    const previousOverflow = document.body.style.overflow;
+    document.body.style.overflow = "hidden";
+    window.addEventListener("keydown", onKey);
+    return () => {
+      document.body.style.overflow = previousOverflow;
+      window.removeEventListener("keydown", onKey);
+    };
+  }, [activeTreatment]);
 
   return (
     <main id="top">
@@ -181,13 +196,6 @@ export default function Home() {
             <div className="hero-actions">
               <a className="button button-primary" href="#treatments">Explore Treatments <Arrow diagonal /></a>
               <a className="simple-link" href="#contact">Find our hospital <Arrow /></a>
-            </div>
-            <div className="hero-pagination" aria-label="Hero slides">
-              {heroSlides.map((slide, index) => (
-                <button type="button" key={slide.kicker} className={index === activeSlide ? "is-active" : ""} aria-label={`Show slide ${index + 1}`} aria-pressed={index === activeSlide} onClick={() => setActiveSlide(index)}>
-                  <span>{String(index + 1).padStart(2, "0")}</span><i />
-                </button>
-              ))}
             </div>
           </div>
           <div className="hero-art" aria-hidden="false">
@@ -258,12 +266,12 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="scope-section">
+      <section className="scope-section" id="treatments">
         <div className="scope-inner section-wrap">
           <SectionLabel number="04" light>SCOPE OF TREATMENT</SectionLabel>
           <div className="scope-heading"><h2>Conditions &<br /><em>treatments.</em></h2><p>Explore the orthopaedic concerns and treatment areas supported at Dr.Malas Hospital.</p></div>
           <div className="scope-list">
-            {treatments.map((item) => <article className="scope-row" key={item.number}><span className="scope-number">{item.number}</span><div><small>{item.label}</small><h3>{item.title}</h3><p>{item.copy}</p></div><a href="#contact" aria-label={`Enquire about ${item.title}`}><Arrow diagonal /></a></article>)}
+            {treatments.map((item) => <article className="scope-row" key={item.number}><span className="scope-number">{item.number}</span><div><small>{item.label}</small><h3>{item.title}</h3><p>{item.copy}</p></div><button type="button" className="scope-open" aria-haspopup="dialog" aria-label={`View details: ${item.title}`} onClick={() => setActiveTreatment(item)}><Arrow diagonal /></button></article>)}
           </div>
         </div>
       </section>
@@ -305,6 +313,21 @@ export default function Home() {
         <div className="footer-main"><a className="footer-brand" href="#top"><span className="brand-emblem" aria-hidden="true"><b>✚</b><i /></span><span><strong>Dr.Malas Hospital</strong><small>MANAPPARAI · TAMIL NADU</small></span></a><p>Orthopaedic care for bones, joints and movement.</p><a className="back-top" href="#top">BACK TO TOP ↑</a></div>
         <div className="footer-bottom"><span>© {new Date().getFullYear()} Dr.Malas Hospital. All rights reserved.</span><span>ORTHOPAEDICS · KNEE & JOINT CARE</span></div>
       </footer>
+
+      {activeTreatment ? (
+        <div className="modal-backdrop" onClick={() => setActiveTreatment(null)}>
+          <div className="modal" role="dialog" aria-modal="true" aria-labelledby="modal-title" onClick={(event) => event.stopPropagation()}>
+            <button type="button" className="modal-close" aria-label="Close" onClick={() => setActiveTreatment(null)}>×</button>
+            {activeTreatment.image ? <img className="modal-image" src={activeTreatment.image} alt={activeTreatment.imageAlt} /> : null}
+            <div className="modal-body">
+              <small>{activeTreatment.label}</small>
+              <h3 id="modal-title">{activeTreatment.title}</h3>
+              <p>{activeTreatment.copy}</p>
+              <a className="button button-primary" href="#contact" onClick={() => setActiveTreatment(null)}>Ask about a consultation <Arrow diagonal /></a>
+            </div>
+          </div>
+        </div>
+      ) : null}
     </main>
   );
 }

@@ -606,3 +606,20 @@ body { font-size: 16px; line-height: 1.6; }
   .hero-art { justify-self: center; width: min(78vw, 320px); }
   .hero-art-chip { left: 0; bottom: 14px; font-size: 13px; }
 }
+
+/* ===== Treatment popup ===== */
+.scope-row > .scope-open { width: 44px; height: 44px; display: grid; place-items: center; border: 1px solid rgba(255,255,255,.5); border-radius: 50%; background: transparent; color: #fff; font-size: 18px; cursor: pointer; transition: all .2s ease; }
+.scope-row > .scope-open:hover, .scope-row > .scope-open:focus-visible { color: #d71e00; background: #fff; border-color: #fff; }
+.modal-backdrop { position: fixed; inset: 0; z-index: 100; display: grid; place-items: center; padding: 24px; background: rgba(35,31,32,.72); animation: modalFade .2s ease both; overflow-y: auto; }
+.modal { position: relative; width: min(920px, 100%); max-height: calc(100vh - 48px); overflow-y: auto; border-radius: 30px; background: #fff; box-shadow: 0 30px 80px rgba(0,0,0,.4); animation: modalIn .25s ease both; }
+.modal-image { display: block; width: 100%; height: auto; }
+.modal-body { display: flex; flex-direction: column; align-items: flex-start; gap: 10px; padding: 28px 36px 34px; }
+.modal-body small { color: #6f6f71; font-size: 13px; font-weight: 600; letter-spacing: .08em; }
+.modal-body h3 { margin: 0; color: #d71e00; font-size: clamp(24px, 3vw, 32px); font-weight: 600; }
+.modal-body p { max-width: 640px; margin: 0 0 10px; color: #6f6f71; font-size: 17px; line-height: 1.7; }
+.modal-close { position: absolute; top: 14px; right: 14px; z-index: 2; width: 42px; height: 42px; border: 0; border-radius: 50%; background: #fff; color: #d71e00; font-size: 28px; line-height: 1; cursor: pointer; box-shadow: 0 4px 14px rgba(0,0,0,.25); }
+.modal-close:hover { color: #fff; background: #d71e00; }
+@keyframes modalFade { from { opacity: 0; } to { opacity: 1; } }
+@keyframes modalIn { from { opacity: 0; transform: translateY(14px) scale(.98); } to { opacity: 1; transform: none; } }
+@media (max-width: 800px) { .modal-body { padding: 22px 22px 28px; } .modal-body p { font-size: 16px; } }
+@media (prefers-reduced-motion: reduce) { .modal, .modal-backdrop { animation: none; } }
