@@ -504,3 +504,87 @@ h1, h2, h3 { font-family: var(--font); text-transform: none; }
 }
 :focus-visible { outline: 2px solid #d71e00; outline-offset: 3px; }
 @media (prefers-reduced-motion: reduce) { .moving-strip div, .hero-title-wrap { animation: none; } }
+
+/* ===== Larger, more readable text ===== */
+html { font-size: 16px; }
+body { font-size: 16px; line-height: 1.6; }
+
+/* Top bar, header, nav, buttons */
+.topline-inner { font-size: 12px; letter-spacing: .06em; }
+.brand-text strong { font-size: 22px; }
+.brand-text small { font-size: 11px; }
+.footer-brand strong { font-size: 22px; }
+.footer-brand small { font-size: 11px; }
+.site-nav > a:not(.nav-button) { font-size: 15px; }
+.nav-button { font-size: 14px; padding: 14px 22px; }
+.button { font-size: 15px; min-height: 52px; padding: 0 26px; }
+.simple-link { font-size: 15px; }
+.menu-toggle { font-size: 15px; }
+
+/* Hero */
+.hero-kicker { font-size: 13px; letter-spacing: .1em; }
+.hero-note { font-size: clamp(20px, 2.4vw, 26px); }
+.hero-description { font-size: 18px; line-height: 1.7; max-width: 560px; }
+.hero-pagination button { font-size: 13px; }
+.hero-footnote { font-size: 12px; letter-spacing: .08em; }
+
+/* Section labels and body copy */
+.section-label { font-size: 13px; letter-spacing: .08em; }
+.section-number { min-width: 32px; height: 32px; font-size: 12px; }
+.lead { font-size: 21px; line-height: 1.5; }
+.welcome-copy p:not(.lead), .patient-first-copy p:not(.lead), .trust-note, .detail-heading p, .detail-columns p {
+  font-size: 17px; line-height: 1.75;
+}
+.underlined-link { font-size: 15px; }
+.approach-points { font-size: 13px; letter-spacing: .05em; gap: 12px; }
+.approach-points b { font-size: 16px; }
+
+/* Stats */
+.stat strong { font-size: 44px; }
+.stat strong span { font-size: 30px; }
+.stat small, .stat-location small { font-size: 14px; }
+.stat-location b { font-size: 17px; }
+
+/* Doctor band */
+.doctor-role { font-size: 13px; letter-spacing: .08em; }
+.doctor-details > p { font-size: 18px; line-height: 1.75; max-width: 540px; }
+.doctor-proof > span { font-size: 13px; letter-spacing: .08em; }
+.doctor-monogram > span { font-size: 12px; }
+.doctor-monogram small, .doctor-photo-caption { font-size: 11px; }
+
+/* Trust list */
+.trust-item { min-height: 70px; }
+.trust-item > span { font-size: 13px; }
+.trust-item strong { font-size: 17px; }
+.trust-stamp span, .trust-stamp small { font-size: 10px; }
+
+/* Scope of treatment */
+.scope-heading p { font-size: 17px; max-width: 400px; }
+.scope-number { font-size: 15px; }
+.scope-row small { font-size: 12px; letter-spacing: .1em; }
+.scope-row h3 { font-size: clamp(22px, 2.8vw, 30px); }
+.scope-row p { font-size: 16px; line-height: 1.7; }
+
+/* Knee section and detail columns */
+.knee-copy p { font-size: 17px; line-height: 1.75; max-width: 480px; }
+.detail-columns article > span { font-size: 12px; letter-spacing: .1em; }
+.detail-columns h3 { font-size: 24px; }
+.detail-columns p { font-size: 16px; }
+
+/* Visit and footer */
+.visit-grid > div:first-child > p { font-size: 18px; line-height: 1.75; }
+.visit-card-kicker { font-size: 12px; }
+.visit-card h3 { font-size: 34px; }
+.visit-card p { font-size: 17px; }
+.visit-card small { font-size: 14px; }
+.footer-main > p { font-size: 15px; }
+.back-top { font-size: 12px; }
+.footer-bottom { font-size: 14px; }
+
+@media (max-width: 800px) {
+  .topline-inner { font-size: 11px; }
+  .lead { font-size: 19px; }
+  .welcome-copy p:not(.lead), .patient-first-copy p:not(.lead), .trust-note, .detail-heading p, .detail-columns p, .knee-copy p { font-size: 16px; }
+  .hero-description, .doctor-details > p, .visit-grid > div:first-child > p { font-size: 16px; }
+  .approach-points { font-size: 12px; }
+}
