@@ -2,375 +2,74 @@
 
 import { useState } from "react";
 
-const services = [
-  {
-    icon: "K",
-    title: "Knee Replacement",
-    text: "Evaluation and surgical care for advanced knee arthritis, including total knee replacement when appropriate.",
-  },
-  {
-    icon: "J",
-    title: "Knee Pain & Arthritis",
-    text: "Diagnosis and treatment of knee pain caused by arthritis, injuries, cartilage problems and age-related joint changes.",
-  },
-  {
-    icon: "H",
-    title: "Hip & Joint Care",
-    text: "Assessment and treatment of painful hip and other joint conditions, with both non-surgical and surgical options.",
-  },
-  {
-    icon: "F",
-    title: "Fracture & Trauma Care",
-    text: "Prompt orthopaedic management of fractures and musculoskeletal injuries, including surgery when required.",
-  },
-  {
-    icon: "S",
-    title: "Sports & Ligament Injuries",
-    text: "Care for common sports-related injuries affecting the knee, shoulder, ankle and other joints.",
-  },
-  {
-    icon: "A",
-    title: "General Orthopaedics",
-    text: "Comprehensive treatment for common bone, joint, muscle, ligament and age-related orthopaedic conditions.",
-  },
+const treatments = [
+  { n: "01", title: "Knee Replacement Surgery", detail: "Evaluation and surgical treatment options for advanced knee conditions and mobility concerns." },
+  { n: "02", title: "Spine & Back Pain Treatment", detail: "Assessment and individualized management of back pain and spine-related conditions." },
+  { n: "03", title: "Sports Injury & Ligament Treatment", detail: "Care for sports injuries, ligament problems and recovery after injury." },
+  { n: "04", title: "Fracture & Trauma Care", detail: "Timely evaluation and treatment planning for fractures and orthopaedic trauma." },
+  { n: "05", title: "Arthritis & Joint Pain Treatment", detail: "Support for arthritis, joint stiffness and persistent pain using appropriate treatment options." },
+  { n: "06", title: "Shoulder & Hip Pain Management", detail: "Diagnosis and treatment of common shoulder and hip conditions." },
 ];
 
-const testimonials = [
-  {
-    quote:
-      "The doctor explained my knee problem clearly and discussed the available treatment options patiently.",
-    name: "Sample patient feedback",
-  },
-  {
-    quote:
-      "The consultation was reassuring, and the treatment plan was easy for our family to understand.",
-    name: "Sample patient feedback",
-  },
-  {
-    quote:
-      "A professional and caring approach from consultation through follow-up.",
-    name: "Sample patient feedback",
-  },
+const reasons = [
+  "Experienced orthopaedic specialist",
+  "Advanced surgical facilities",
+  "Modern diagnostic support",
+  "Structured rehabilitation programs",
+  "Personalized patient care",
+  "Convenient accessibility from multiple areas",
 ];
 
-function ArrowIcon() {
-  return <span aria-hidden="true">→</span>;
+function ImagePlaceholder({ label, shape = "landscape", number = "01" }) {
+  return (
+    <div className={`image-placeholder image-placeholder--${shape}`} role="img" aria-label={`${label} image placeholder`}>
+      <span className="placeholder-cross placeholder-cross--a" aria-hidden="true" />
+      <span className="placeholder-cross placeholder-cross--b" aria-hidden="true" />
+      <div className="placeholder-top"><span>IMAGE / {number}</span><span>DR. MALA HOSPITAL</span></div>
+      <div className="placeholder-middle"><span className="placeholder-icon" aria-hidden="true">✳</span><strong>{label}</strong><small>Photo placeholder — replace later</small></div>
+      <span className="placeholder-bottom">MANAPPARAI • TAMIL NADU</span>
+    </div>
+  );
 }
 
 export default function Home() {
-  const [status, setStatus] = useState("");
-  const basePath = process.env.NODE_ENV === "production" ? "/drmalashospital" : "";
-
-  function submitAppointment(event) {
-    event.preventDefault();
-    const form = event.currentTarget;
-    const data = Object.fromEntries(new FormData(form));
-
-    const message = [
-      "Appointment request - Dr. Mala Hospital",
-      `Name: ${data.name || ""}`,
-      `Phone: ${data.phone || ""}`,
-      `Email: ${data.email || "Not provided"}`,
-      `Preferred date: ${data.date || ""}`,
-      `Reason: ${data.message || "Not provided"}`,
-    ].join("\n");
-
-    setStatus(
-      "Your details are ready. Please call or WhatsApp the hospital to confirm the appointment."
-    );
-
-    // Replace XXXXXXXXXX with the hospital's verified WhatsApp number before publishing.
-    window.open(`https://wa.me/91XXXXXXXXXX?text=${encodeURIComponent(message)}`, "_blank");
-  }
-
+  const [menuOpen, setMenuOpen] = useState(false);
+  const closeMenu = () => setMenuOpen(false);
   return (
     <main>
+      <div className="top-strip"><span>DR. MALA HOSPITAL · MANAPPARAI</span><span>ORTHOPAEDICS & JOINT CARE</span></div>
       <header className="site-header">
-        <div className="container nav-wrap">
-          <a className="brand" href="#home" aria-label="Dr. Mala Hospital home">
-            <span className="brand-mark">DM</span>
-            <span>
-              <strong>Dr. Mala Hospital</strong>
-              <small>Orthopaedic & Joint Care • Manapparai</small>
-            </span>
-          </a>
-
-          <nav className="nav-links" aria-label="Primary navigation">
-            <a href="#about">About</a>
-            <a href="#services">Specialities</a>
-            <a href="#experience">Why Choose Us</a>
-            <a href="#testimonials">Patient Stories</a>
-            <a href="#contact">Contact</a>
-          </nav>
-
-          <a className="button button-small" href="#appointment">
-            Book Appointment
-          </a>
-        </div>
+        <a className="brand" href="#home" onClick={closeMenu}><span className="brand-symbol">✳</span><span><strong>DR. MALA</strong><small>HOSPITAL · MANAPPARAI</small></span></a>
+        <button className="menu-toggle" type="button" aria-expanded={menuOpen} aria-controls="main-nav" onClick={() => setMenuOpen(!menuOpen)}>{menuOpen ? "Close" : "Menu"} <span aria-hidden="true">{menuOpen ? "×" : "☰"}</span></button>
+        <nav id="main-nav" className={`nav ${menuOpen ? "nav--open" : ""}`} aria-label="Main navigation">
+          <a href="#about" onClick={closeMenu}>About</a><a href="#services" onClick={closeMenu}>Treatments</a><a href="#why-us" onClick={closeMenu}>Why choose us</a><a href="#location" onClick={closeMenu}>Location</a><a href="#contact" className="nav-cta" onClick={closeMenu}>Enquire <span aria-hidden="true">↗</span></a>
+        </nav>
       </header>
 
-      <section id="home" className="hero">
-        <div className="container hero-grid">
-          <div className="hero-copy">
-            <p className="eyebrow">Orthopaedics • Knee Replacement • Joint Care • Trauma</p>
-            <h1>
-              Freedom from joint pain starts with <span>the right care.</span>
-            </h1>
-            <p className="hero-text">
-              Dr. Muthukarthikeyan provides comprehensive orthopaedic care at Dr. Mala Hospital, Manapparai, with more than 10 years of clinical and surgical experience and a special focus on knee replacement and joint care.
-            </p>
-            <div className="hero-actions">
-              <a className="button" href="#appointment">
-                Book a Consultation <ArrowIcon />
-              </a>
-              <a className="text-link" href="#contact">
-                Visit Dr. Mala Hospital
-              </a>
-            </div>
-            <div className="trust-row">
-              <div>
-                <strong>10+</strong>
-                <span>Years of orthopaedic practice</span>
-              </div>
-              <div>
-                <strong>Knee</strong>
-                <span>Replacement focus</span>
-              </div>
-              <div>
-                <strong>Joint</strong>
-                <span>Care & mobility</span>
-              </div>
-            </div>
-          </div>
-
-          <div className="hero-visual">
-            <div className="portrait-card">
-              <img
-                src={`${basePath}/doctor-placeholder.svg`}
-                alt="Dr. Muthukarthikeyan portrait placeholder"
-              />
-              <div className="availability-card">
-                <span className="status-dot" />
-                <div>
-                  <strong>Orthopaedic consultations</strong>
-                  <small>Dr. Mala Hospital • Manapparai</small>
-                </div>
-              </div>
-            </div>
-            <div className="floating-note note-one">Knee & joint care</div>
-            <div className="floating-note note-two">Orthopaedic surgery</div>
-          </div>
-        </div>
+      <section className="hero section-pad" id="home">
+        <div className="hero-heading"><div className="eyebrow"><span className="dot" /> ORTHOPAEDIC CARE IN MANAPPARAI</div><h1>MOVE<br /><em>BETTER.</em><br />LIVE <span className="outlined">FULLY.</span></h1></div>
+        <div className="hero-bottom"><p>Expert orthopaedic care, close to home. Personalized treatment for bones, joints and mobility at Dr. Mala Hospital.</p><a className="round-arrow" href="#services" aria-label="Explore our treatments">↘</a></div>
+        <div className="hero-visual"><ImagePlaceholder label="Hospital / Orthopaedic Care" shape="wide" number="01" /><div className="visual-caption"><span>DR. MUTHUKARTHIKEYAN</span><span>ORTHOPAEDIC & JOINT REPLACEMENT CARE</span></div></div>
       </section>
 
-      <section className="logo-strip" aria-label="Orthopaedic services">
-        <div className="container logo-row">
-          <span>Orthopaedic Surgery</span>
-          <span>Knee Replacement</span>
-          <span>Fracture Care</span>
-          <span>Joint & Mobility Care</span>
-        </div>
-      </section>
+      <section className="intro section-pad" id="about"><div className="section-kicker">01 / INTRODUCTION</div><div className="intro-grid"><h2>EXPERT CARE.<br /><em>RIGHT HERE</em><br />IN MANAPPARAI.</h2><div className="intro-copy"><p className="lead">Dr. Mala Hospital provides advanced orthopaedic treatment for patients across Manapparai.</p><p>Our hospital is conveniently accessible from multiple residential and commercial neighbourhoods, making expert bone and joint care available close to home.</p><p>We focus on knee replacement surgery, spine treatment, sports injury management, fracture care and arthritis treatment, with an emphasis on accurate diagnosis, evidence-based treatment and structured rehabilitation support.</p><a className="text-link" href="#contact">Plan your visit <span aria-hidden="true">↗</span></a></div></div></section>
 
-      <section id="about" className="section">
-        <div className="container split-grid">
-          <div className="section-heading sticky-heading">
-            <p className="eyebrow">Meet your doctor</p>
-            <h2>Experienced orthopaedic care with a focus on movement and quality of life.</h2>
-          </div>
-          <div className="about-copy">
-            <p className="lead">
-              Dr. Muthukarthikeyan is an orthopaedic surgeon practising at Dr. Mala Hospital, Manapparai, with more than 10 years of experience in orthopaedic consultation and surgical care.
-            </p>
-            <p>
-              His clinical focus includes knee pain, arthritis, knee replacement, fractures, trauma and common bone and joint conditions. Treatment is planned according to each patient’s condition, lifestyle and individual needs, with non-surgical options considered whenever appropriate.
-            </p>
-            <div className="credentials-grid">
-              <div><strong>10+ Years</strong><span>Orthopaedic practice</span></div>
-              <div><strong>Knee Replacement</strong><span>Special clinical focus</span></div>
-              <div><strong>Orthopaedic Surgery</strong><span>Bone & joint care</span></div>
-              <div><strong>Manapparai</strong><span>Dr. Mala Hospital</span></div>
-            </div>
-            <a className="text-link" href="#services">Explore treatments <ArrowIcon /></a>
-          </div>
-        </div>
-      </section>
+      <section className="doctor-section section-pad"><div className="doctor-visual"><ImagePlaceholder label="Dr. Muthukarthikeyan Portrait" shape="portrait" number="02" /></div><div className="doctor-copy"><div className="section-kicker">MEET YOUR SPECIALIST</div><h2>DR.<br />MUTHU<span className="soft-break">KARTHIKEYAN</span></h2><div className="doctor-role">ORTHOPAEDIC & JOINT REPLACEMENT CARE</div><p>Dedicated to helping patients manage joint pain, recover from injuries and improve mobility through individualized orthopaedic care.</p><div className="experience"><strong>10<span>+</span></strong><div>YEARS OF<br />ORTHOPAEDIC PRACTICE</div></div><a className="pill-button" href="#contact">Contact the hospital <span aria-hidden="true">↗</span></a></div></section>
 
-      <section id="services" className="section section-soft">
-        <div className="container">
-          <div className="section-heading centered">
-            <p className="eyebrow">Areas of care</p>
-            <h2>Comprehensive orthopaedic treatment for bones, joints and mobility.</h2>
-            <p>
-              From common joint pain to fractures and advanced knee arthritis, patients receive a structured evaluation and a treatment plan tailored to their needs.
-            </p>
-          </div>
-          <div className="card-grid">
-            {services.map((service) => (
-              <article className="service-card" key={service.title}>
-                <span className="service-icon">{service.icon}</span>
-                <h3>{service.title}</h3>
-                <p>{service.text}</p>
-                <a href="#appointment">Request consultation <ArrowIcon /></a>
-              </article>
-            ))}
-          </div>
-        </div>
-      </section>
+      <section className="statement section-pad"><span className="section-kicker">OUR APPROACH</span><p>BETTER MOVEMENT<br />STARTS WITH <em>BETTER CARE.</em></p></section>
 
-      <section className="section">
-        <div className="container split-grid">
-          <div className="section-heading sticky-heading">
-            <p className="eyebrow">Knee replacement care</p>
-            <h2>Move with confidence again.</h2>
-          </div>
-          <div className="about-copy">
-            <p className="lead">
-              Persistent knee pain can make walking, climbing stairs and everyday activities difficult.
-            </p>
-            <p>
-              For people with advanced knee arthritis who no longer receive enough relief from medication, physiotherapy, lifestyle changes or other conservative treatment, knee replacement surgery may be considered after a complete orthopaedic evaluation.
-            </p>
-            <p>
-              Dr. Muthukarthikeyan provides assessment, surgical care and post-operative guidance with the goal of reducing pain, improving mobility and helping patients return to their daily activities.
-            </p>
-            <a className="button" href="#appointment">Schedule a Knee Consultation <ArrowIcon /></a>
-          </div>
-        </div>
-      </section>
+      <section className="services section-pad" id="services"><div className="section-kicker">02 / WHAT WE TREAT</div><div className="services-head"><h2>COMPREHENSIVE<br /><em>ORTHOPAEDIC</em><br />SERVICES.</h2><p>From joint pain to injury recovery, our team offers a range of orthopaedic services with treatment plans tailored to individual needs.</p></div><div className="service-list">{treatments.map((t) => <article className="service-item" key={t.n}><span className="service-number">{t.n}</span><div><h3>{t.title}</h3><p>{t.detail}</p></div><span className="service-arrow" aria-hidden="true">↗</span></article>)}</div></section>
 
-      <section id="experience" className="section dark-section">
-        <div className="container experience-grid">
-          <div>
-            <p className="eyebrow light">Why choose us</p>
-            <h2>Orthopaedic decisions built around the patient, not only the X-ray.</h2>
-            <p>
-              The aim is to understand the cause of pain, explain the available options clearly and choose a treatment plan appropriate for the patient’s needs and activity level.
-            </p>
-          </div>
-          <div className="feature-list">
-            <div><span>01</span><div><h3>10+ years of experience</h3><p>More than a decade of experience in orthopaedic consultation and surgical care.</p></div></div>
-            <div><span>02</span><div><h3>Surgical & non-surgical options</h3><p>Conservative treatment is considered where appropriate before recommending an operation.</p></div></div>
-            <div><span>03</span><div><h3>Joint replacement focus</h3><p>Special attention to the evaluation and management of knee arthritis and patients who may benefit from knee replacement.</p></div></div>
-            <div><span>04</span><div><h3>Complete follow-up</h3><p>Guidance from diagnosis through treatment, rehabilitation and follow-up care.</p></div></div>
-          </div>
-        </div>
-      </section>
+      <section className="feature section-pad"><div className="feature-copy"><div className="section-kicker">A CLOSER LOOK</div><h2>FOCUSED ON<br /><em>KNEE & JOINT</em><br />HEALTH.</h2><p>Whether you are managing persistent knee pain, arthritis or a mobility concern, our goal is to help you understand your treatment options and make informed decisions about your care.</p><a className="text-link" href="#contact">Ask about a consultation <span aria-hidden="true">↗</span></a></div><div><ImagePlaceholder label="Knee / Joint Care" shape="portrait" number="03" /></div></section>
 
-      <section id="testimonials" className="section">
-        <div className="container">
-          <div className="section-heading centered narrow">
-            <p className="eyebrow">Patient experiences</p>
-            <h2>Care that patients and families can understand.</h2>
-          </div>
-          <div className="testimonial-grid">
-            {testimonials.map((item, index) => (
-              <figure className="testimonial-card" key={index}>
-                <div className="stars" aria-label="5 out of 5 stars">★★★★★</div>
-                <blockquote>“{item.quote}”</blockquote>
-                <figcaption>{item.name}</figcaption>
-              </figure>
-            ))}
-          </div>
-          <p className="disclaimer">
-            These are sample testimonials for the website layout only. Replace them with genuine, consented patient feedback before publishing.
-          </p>
-        </div>
-      </section>
+      <section className="why section-pad" id="why-us"><div className="section-kicker">03 / WHY CHOOSE US</div><div className="why-grid"><div><h2>CARE THAT<br />PUTS <em>YOU</em><br />FIRST.</h2><ImagePlaceholder label="Patient Care / Rehabilitation" number="04" /></div><div className="why-content"><p className="lead">Why patients across Manapparai choose Dr. Mala Hospital</p><div className="reason-list">{reasons.map((r, i) => <div className="reason" key={r}><span>{String(i + 1).padStart(2, "0")}</span><strong>{r}</strong><span aria-hidden="true">+</span></div>)}</div><p>Our goal is to help patients receive timely, appropriate orthopaedic treatment without unnecessary long-distance travel.</p></div></div></section>
 
-      <section id="appointment" className="section appointment-section">
-        <div className="container appointment-grid">
-          <div className="appointment-copy">
-            <p className="eyebrow">Book an appointment</p>
-            <h2>Take the next step toward better movement and joint health.</h2>
-            <p>
-              For knee pain, arthritis, fractures, sports injuries or another orthopaedic concern, request a consultation with Dr. Muthukarthikeyan at Dr. Mala Hospital, Manapparai.
-            </p>
-            <div className="contact-points">
-              <a href="#contact"><strong>Hospital</strong><span>Dr. Mala Hospital</span></a>
-              <a href="#contact"><strong>Location</strong><span>Manapparai, Tamil Nadu</span></a>
-              <a href="#contact"><strong>Phone / WhatsApp</strong><span>Add verified hospital number</span></a>
-            </div>
-          </div>
+      <section className="marquee" aria-label="Our focus"><div>MOVE WITH CONFIDENCE <span>✳</span> CARE CLOSE TO HOME <span>✳</span></div></section>
 
-          <form className="appointment-form" onSubmit={submitAppointment}>
-            <label>
-              Full name
-              <input name="name" type="text" autoComplete="name" required maxLength={80} />
-            </label>
-            <div className="field-row">
-              <label>
-                Phone number
-                <input name="phone" type="tel" autoComplete="tel" required maxLength={20} />
-              </label>
-              <label>
-                Email
-                <input name="email" type="email" autoComplete="email" maxLength={120} />
-              </label>
-            </div>
-            <label>
-              Preferred date
-              <input name="date" type="date" required />
-            </label>
-            <label>
-              Reason for consultation
-              <textarea name="message" rows="4" maxLength={600} placeholder="For example: knee pain, arthritis, fracture follow-up or joint problem." />
-            </label>
-            <label className="consent">
-              <input name="consent" type="checkbox" required />
-              <span>I agree to be contacted by the hospital regarding this appointment request.</span>
-            </label>
-            <button className="button button-full" type="submit">
-              Request Appointment
-            </button>
-            {status && <p className="form-status" role="status">{status}</p>}
-            <p className="privacy-note">For emergencies, contact the hospital or nearest emergency service directly. Do not submit highly sensitive medical information through this form.</p>
-          </form>
-        </div>
-      </section>
+      <section className="location section-pad" id="location"><div className="section-kicker">04 / FIND US</div><div className="location-grid"><div><h2>RIGHT HERE<br />IN <em>MANAPPARAI.</em></h2><p>Dr. Mala Hospital is located to serve patients from Manapparai and nearby neighbourhoods. Well-connected roads and convenient transport access make consultations and follow-up visits easier.</p><div className="location-info"><strong>DR. MALA HOSPITAL</strong><span>Manapparai, Tamil Nadu</span><small>Exact street address, telephone and opening hours to be added after confirmation.</small></div><a className="pill-button" href="https://www.google.com/maps/search/?api=1&query=Dr+Mala+Hospital+Manapparai" target="_blank" rel="noopener noreferrer">Find on Google Maps <span aria-hidden="true">↗</span></a></div><ImagePlaceholder label="Hospital Exterior / Location" shape="portrait" number="05" /></div></section>
 
-      <section id="contact" className="section section-soft">
-        <div className="container location-grid">
-          <div>
-            <p className="eyebrow">Visit the hospital</p>
-            <h2>Orthopaedic consultation in Manapparai.</h2>
-            <p>
-              Dr. Muthukarthikeyan consults at Dr. Mala Hospital, Manapparai. Add the hospital’s verified street address, phone number, consultation timings and Google Maps link before publishing.
-            </p>
-          </div>
-          <div className="location-card">
-            <div className="map-placeholder" role="img" aria-label="Map placeholder">
-              <span>Map</span>
-            </div>
-            <div className="location-details">
-              <h3>Dr. Mala Hospital</h3>
-              <p>Manapparai, Tamil Nadu</p>
-              <p><strong>Orthopaedics:</strong> Dr. Muthukarthikeyan<br /><strong>Consultation:</strong> Add verified timings</p>
-              <a className="text-link" href="https://maps.google.com" target="_blank" rel="noreferrer">Open Google Maps <ArrowIcon /></a>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <footer className="footer">
-        <div className="container footer-grid">
-          <div>
-            <a className="brand footer-brand" href="#home">
-              <span className="brand-mark">DM</span>
-              <span><strong>Dr. Mala Hospital</strong><small>Orthopaedic & Joint Care • Manapparai</small></span>
-            </a>
-            <p>Orthopaedic consultation, surgery, knee replacement and joint care with Dr. Muthukarthikeyan.</p>
-          </div>
-          <div><strong>Navigate</strong><a href="#about">About Doctor</a><a href="#services">Specialities</a><a href="#appointment">Appointment</a></div>
-          <div><strong>Contact</strong><a href="#contact">Manapparai, Tamil Nadu</a><a href="#contact">Add hospital phone number</a></div>
-        </div>
-        <div className="container footer-bottom">
-          <span>© {new Date().getFullYear()} Dr. Mala Hospital. All rights reserved.</span>
-          <span>Website information is for general education and does not replace an in-person medical evaluation or emergency care.</span>
-        </div>
-      </footer>
-
-      <a className="whatsapp-fab" href="#appointment" aria-label="Book orthopaedic appointment">APPT</a>
+      <section className="contact section-pad" id="contact"><div className="section-kicker">05 / GET IN TOUCH</div><h2>LET'S GET YOU<br /><em>MOVING.</em></h2><div className="contact-bottom"><p>For orthopaedic consultations, knee replacement enquiries and follow-up care, contact Dr. Mala Hospital in Manapparai.</p><div className="contact-card"><span>APPOINTMENTS & ENQUIRIES</span><strong>Dr. Mala Hospital</strong><p>Manapparai, Tamil Nadu</p><small>Phone number and consultation hours will be added once verified.</small></div></div></section>
+      <footer className="footer"><div className="footer-brand">✳ DR. MALA HOSPITAL</div><div>MANAPPARAI · TAMIL NADU</div><a href="#home">BACK TO TOP ↑</a><small>© {new Date().getFullYear()} Dr. Mala Hospital. All rights reserved.</small></footer>
     </main>
   );
 }
