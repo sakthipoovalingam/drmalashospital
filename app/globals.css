@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,400;0,500;0,600;0,700;0,800;1,400&display=swap');
 
 :root {
   --navy: #58595b;
@@ -678,16 +678,34 @@ body { font-size: 16px; line-height: 1.6; }
   .section-label::before { flex-basis: 20px; width: 20px; }
 }
 
-/* ===== Final hierarchy and spacing refinement ===== */
+/* ===== Stronger section headings ===== */
 .section-label {
-  margin-bottom: 44px;
-  color: #56575a;
-  font-size: clamp(12px, 1vw, 14px);
-  font-weight: 700;
-  letter-spacing: .095em;
-  line-height: 1.55;
+  display: flex;
+  align-items: center;
+  gap: 13px;
+  max-width: 100%;
+  margin-bottom: 42px;
+  color: #414246;
+  font-family: var(--font);
+  font-size: clamp(15px, 1.2vw, 18px);
+  font-weight: 800;
+  letter-spacing: .065em;
+  line-height: 1.4;
+  text-transform: uppercase;
 }
-.section-label::before { width: 30px; flex-basis: 30px; height: 3px; }
+.section-label > span {
+  display: block;
+  min-width: 0;
+}
+.section-label::before {
+  width: 32px;
+  flex: 0 0 32px;
+  height: 4px;
+  border-radius: 4px;
+  background: #d71e00;
+}
+.section-label--light { color: rgba(255,255,255,.96); }
+.section-label--light::before { background: #f05a34; }
 
 .welcome h2,
 .patient-first h2,
@@ -766,8 +784,8 @@ body { font-size: 16px; line-height: 1.6; }
   .scope-heading h2 { font-size: clamp(39px, 11vw, 52px); }
   .doctor-details h2 { font-size: 46px; }
   .visit-grid h2 { font-size: clamp(50px, 13vw, 68px); }
-  .section-label { font-size: 10px; letter-spacing: .07em; gap: 9px; }
-  .section-label::before { width: 20px; flex-basis: 20px; }
+  .section-label { font-size: 13px; font-weight: 800; letter-spacing: .045em; line-height: 1.4; gap: 10px; margin-bottom: 28px; }
+  .section-label::before { width: 22px; flex-basis: 22px; height: 3px; }
   .patient-first,
   .trust-section { padding: 32px 19px; border-radius: 21px; }
   .trust-item { min-height: 64px; }

@@ -85,10 +85,9 @@ function Arrow({ diagonal = false }) {
   return <span aria-hidden="true">{diagonal ? "↗" : "→"}</span>;
 }
 
-function SectionLabel({ number, children, light = false }) {
+function SectionLabel({ children, light = false }) {
   return (
     <div className={`section-label${light ? " section-label--light" : ""}`}>
-      {number ? <span className="section-number">{number}</span> : null}
       <span>{children}</span>
     </div>
   );
@@ -204,7 +203,7 @@ export default function Home() {
       </section>
 
       <section className="welcome section-wrap" id="about">
-        <SectionLabel number="01">WELCOME TO DR.MALAS HOSPITAL</SectionLabel>
+        <SectionLabel>WELCOME TO DR.MALAS HOSPITAL</SectionLabel>
         <div className="welcome-grid">
           <div><h2>Welcome to<br /><em>expert orthopaedic</em><br />care in Manapparai.</h2></div>
           <div className="welcome-copy">
@@ -229,7 +228,7 @@ export default function Home() {
           <div className="doctor-photo-caption">MEET YOUR ORTHOPAEDIC SPECIALIST</div>
         </div>
         <div className="doctor-details">
-          <SectionLabel number="02" light>GET TO KNOW YOUR DOCTOR</SectionLabel>
+          <SectionLabel light>GET TO KNOW YOUR DOCTOR</SectionLabel>
           <div className="doctor-role">ORTHOPAEDIC & JOINT REPLACEMENT CARE</div>
           <h2>Dr. Muthu<br /><em>Karthikeyan</em></h2>
           <p>Dedicated to helping patients manage joint pain, recover from injuries and improve mobility through individualized orthopaedic care.</p>
