@@ -272,22 +272,12 @@ export default function Home() {
           </div>
         </div>
       </section>
-      <section className="treatment-detail section-wrap">
-        <SectionLabel number="06">ORTHOPAEDIC CARE, PERSONALIZED FOR YOU</SectionLabel>
-        <div className="detail-heading"><h2>Focused care<br /><em>for better movement.</em></h2><p>From joint pain to injury recovery, explore the services offered and speak with the hospital about the next step for your care.</p></div>
-        <div className="detail-columns">
-          <article><span>01 / KNEE & JOINT</span><h3>Knee replacement & arthritis care</h3><p>Assessment and treatment planning for advanced knee conditions, joint stiffness and persistent pain, with the aim of improving day-to-day mobility.</p></article>
-          <article><span>02 / SPINE & BACK</span><h3>Spine and back pain treatment</h3><p>Evaluation of back pain and spine-related concerns, with management options tailored to the patient's condition and needs.</p></article>
-          <article><span>03 / SPORTS & LIGAMENT</span><h3>Sports injury and ligament care</h3><p>Care for sports-related injuries, ligament problems and recovery after injury, including guidance on rehabilitation support.</p></article>
-          <article><span>04 / FRACTURE & TRAUMA</span><h3>Fracture and trauma care</h3><p>Timely evaluation and treatment planning for fractures and orthopaedic trauma, with follow-up care as needed.</p></article>
-        </div>
-      </section>
 
       <section className="moving-strip" aria-label="Our commitment"><div>MOVE WITH CONFIDENCE <i>✳</i> CARE CLOSE TO HOME <i>✳</i> EVERY STEP MATTERS <i>✳</i> MOVE WITH CONFIDENCE <i>✳</i></div></section>
 
       <section className="visit-section" id="contact">
         <div className="visit-inner section-wrap">
-          <SectionLabel number="07" light>FIND & VISIT US</SectionLabel>
+          <SectionLabel light>FIND & VISIT US</SectionLabel>
           <div className="visit-grid">
             <div><h2>Let's get you<br /><em>moving.</em></h2><p>For orthopaedic consultations, knee replacement enquiries and follow-up care, visit Dr.Malas Hospital in Manapparai.</p></div>
             <div className="visit-card"><div className="visit-card-kicker">YOUR LOCAL ORTHOPAEDIC CARE</div><h3>Dr.Malas Hospital</h3><p>Manapparai, Tamil Nadu</p><div className="visit-divider" /><a className="button button-white" href="https://www.google.com/maps/search/?api=1&query=Dr.Malas+Hospital+Manapparai" target="_blank" rel="noopener noreferrer">Get directions <Arrow diagonal /></a><small>Use the map link to find the hospital and plan your visit.</small></div>
