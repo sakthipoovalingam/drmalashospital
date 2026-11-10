@@ -631,3 +631,18 @@ body { font-size: 16px; line-height: 1.6; }
 .stats-row .stat:nth-child(2) { padding: 22px 20px 22px 94px; border: 1px solid #c8c8c8; border-radius: 30px; }
 .stats-row .stat-location { padding: 22px 24px; border: 1px solid #c8c8c8; border-radius: 30px; justify-content: flex-start; }
 @media (max-width: 800px) { .stats-row { gap: 14px; } }
+
+
+/* Dr.Malas Hospital logo replacement */
+.brand { display: inline-flex; align-items: center; flex: 0 0 auto; }
+.brand-logo { display: block; width: 190px; height: auto; max-height: 88px; object-fit: contain; }
+.footer-brand { display: inline-flex; align-items: center; }
+.footer-brand-logo { display: block; width: 184px; height: auto; max-height: 86px; padding: 5px 8px; background: #fff; border-radius: 4px; object-fit: contain; }
+@media (max-width: 800px) {
+  .site-header { min-height: 76px; }
+  .brand-logo { width: 142px; max-height: 66px; }
+  .footer-brand-logo { width: 166px; max-height: 78px; }
+}
+@media (max-width: 520px) {
+  .brand-logo { width: 132px; max-height: 62px; }
+}

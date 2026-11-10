@@ -39,8 +39,6 @@ const treatments = [
     label: "KNEE & JOINT CARE",
     title: "Knee Replacement Surgery",
     copy: "Evaluation and surgical treatment options for advanced knee conditions and mobility concerns.",
-    image: "/drmalashospital/knee-joint-care.webp",
-    imageAlt: "For every step. For every move. Knee and joint care",
   },
   {
     number: "02",
@@ -168,9 +166,8 @@ export default function Home() {
       </div>
 
       <header className="site-header">
-        <a className="brand" href="#top" onClick={closeMenu} aria-label="Dr.Malas Hospital home">
-          <span className="brand-emblem" aria-hidden="true"><b>✚</b><i /></span>
-          <span className="brand-text"><strong>Dr.Malas Hospital</strong><small>MANAPPARAI · TAMIL NADU</small></span>
+        <a className="brand" href="#top" onClick={closeMenu} aria-label="Dr Mala's Hospital home">
+          <img className="brand-logo" src="/drmalashospital/dr-malas-logo.png" alt="Dr Mala's Hospital — Orthocare" />
         </a>
         <button className="menu-toggle" type="button" aria-expanded={menuOpen} aria-controls="site-nav" onClick={() => setMenuOpen((open) => !open)}>
           <span>{menuOpen ? "Close" : "Menu"}</span><b aria-hidden="true">{menuOpen ? "×" : "☰"}</b>
@@ -275,17 +272,6 @@ export default function Home() {
           </div>
         </div>
       </section>
-
-      <section className="knee-section">
-        <div className="knee-copy">
-          <SectionLabel number="05" light>A CLOSER LOOK</SectionLabel>
-          <h2>For every step.<br /><em>For every move.</em></h2>
-          <p>Whether you are managing persistent knee pain, arthritis or a mobility concern, our goal is to help you understand your treatment options and make informed decisions about your care.</p>
-          <a className="button button-white" href="#contact">Ask about a consultation <Arrow diagonal /></a>
-        </div>
-        <div className="knee-image"><img src="/drmalashospital/knee-joint-care.webp" alt="Knee and joint care — comprehensive care for knees and joints" loading="lazy" /></div>
-      </section>
-
       <section className="treatment-detail section-wrap">
         <SectionLabel number="06">ORTHOPAEDIC CARE, PERSONALIZED FOR YOU</SectionLabel>
         <div className="detail-heading"><h2>Focused care<br /><em>for better movement.</em></h2><p>From joint pain to injury recovery, explore the services offered and speak with the hospital about the next step for your care.</p></div>
@@ -310,7 +296,7 @@ export default function Home() {
       </section>
 
       <footer className="site-footer">
-        <div className="footer-main"><a className="footer-brand" href="#top"><span className="brand-emblem" aria-hidden="true"><b>✚</b><i /></span><span><strong>Dr.Malas Hospital</strong><small>MANAPPARAI · TAMIL NADU</small></span></a><p>Orthopaedic care for bones, joints and movement.</p><a className="back-top" href="#top">BACK TO TOP ↑</a></div>
+        <div className="footer-main"><a className="footer-brand" href="#top" aria-label="Dr Mala's Hospital home"><img className="footer-brand-logo" src="/drmalashospital/dr-malas-logo.png" alt="Dr Mala's Hospital — Orthocare" /></a><p>Orthopaedic care for bones, joints and movement.</p><a className="back-top" href="#top">BACK TO TOP ↑</a></div>
         <div className="footer-bottom"><span>© {new Date().getFullYear()} Dr.Malas Hospital. All rights reserved.</span><span>ORTHOPAEDICS · KNEE & JOINT CARE</span></div>
       </footer>
 
