@@ -28,8 +28,8 @@ const heroSlides = [
     kicker: "BONE · JOINT · MOBILITY",
     lineOne: "every step",
     accent: "counts.",
-    note: "Your movement deserves attention.",
-    description: "Explore orthopaedic services for knee, spine, sports injuries, fractures and joint conditions.",
+    note: "Support for the way you want to move.",
+    description: "Find practical guidance for the everyday activities you want to return to.",
   },
 ];
 
@@ -210,7 +210,6 @@ export default function Home() {
           <div className="welcome-copy">
             <p className="lead">Care for bones, joints and movement — with a patient-first approach.</p>
             <p>Dr.Malas Hospital provides orthopaedic treatment for patients across Manapparai. Our hospital is conveniently accessible from multiple residential and commercial neighbourhoods, making bone and joint care available close to home.</p>
-            <p>We focus on knee replacement surgery, spine treatment, sports injury management, fracture care and arthritis treatment, with an emphasis on accurate diagnosis, evidence-based treatment and structured rehabilitation support.</p>
             <a className="underlined-link" href="#doctor">Get to know your orthopaedic specialist <Arrow diagonal /></a>
           </div>
         </div>
@@ -234,7 +233,6 @@ export default function Home() {
           <div className="doctor-role">ORTHOPAEDIC & JOINT REPLACEMENT CARE</div>
           <h2>Dr. Muthu<br /><em>Karthikeyan</em></h2>
           <p>Dedicated to helping patients manage joint pain, recover from injuries and improve mobility through individualized orthopaedic care.</p>
-          <div className="doctor-proof"><strong>10<span>+</span></strong><span>YEARS OF<br />ORTHOPAEDIC PRACTICE</span></div>
           <a className="button button-white" href="#contact">Visit Dr.Malas Hospital <Arrow diagonal /></a>
         </div>
       </section>
@@ -245,16 +243,16 @@ export default function Home() {
           <h2>Care that starts<br />with listening.<br /><em>Care that moves<br />you forward.</em></h2>
           <div className="patient-first-copy">
             <p className="lead">A patient-first approach to bone and joint health.</p>
-            <p>Every patient and every condition is different. The focus is on understanding the concern, explaining appropriate options and supporting each step of the treatment and recovery journey.</p>
-            <div className="approach-points"><span>ACCURATE ASSESSMENT</span><b>✳</b><span>INFORMED DECISIONS</span><b>✳</b><span>REHABILITATION SUPPORT</span></div>
+            <p>Every patient and every condition is different. We take time to understand what is limiting your movement, explain the available options and help you plan practical next steps with confidence.</p>
+            <div className="approach-points"><span>LISTEN FIRST</span><b>✳</b><span>EXPLAIN OPTIONS</span><b>✳</b><span>SUPPORT RECOVERY</span></div>
           </div>
         </div>
       </section>
 
       <section className="trust-section section-wrap" id="why-us">
-        <SectionLabel number="03">WHY PATIENTS CHOOSE DR.MALAS HOSPITAL</SectionLabel>
+        <SectionLabel>WHY PATIENTS CHOOSE DR.MALAS HOSPITAL</SectionLabel>
         <div className="trust-grid">
-          <div className="trust-heading"><h2>Why patients<br /><em>trust our care.</em></h2><div className="trust-stamp"><span>ORTHOPAEDIC CARE</span><b>✚</b><small>MANAPPARAI · TAMIL NADU</small></div></div>
+          <div className="trust-heading"><h2>Care built around<br /><em>your priorities.</em></h2><div className="trust-stamp"><span>ORTHOPAEDIC CARE</span><b>✚</b><small>MANAPPARAI · TAMIL NADU</small></div></div>
           <div className="trust-content">
             <p className="lead">Thoughtful orthopaedic care, centered on the individual.</p>
             <div className="trust-list">{trustPoints.map((point, index) => <div className="trust-item" key={point}><span>{String(index + 1).padStart(2, "0")}</span><strong>{point}</strong><b aria-hidden="true">＋</b></div>)}</div>
@@ -265,8 +263,8 @@ export default function Home() {
 
       <section className="scope-section" id="treatments">
         <div className="scope-inner section-wrap">
-          <SectionLabel number="04" light>SCOPE OF TREATMENT</SectionLabel>
-          <div className="scope-heading"><h2>Conditions &<br /><em>treatments.</em></h2><p>Explore the orthopaedic concerns and treatment areas supported at Dr.Malas Hospital.</p></div>
+          <SectionLabel light>SCOPE OF TREATMENT</SectionLabel>
+          <div className="scope-heading"><h2>Care for<br /><em>better movement.</em></h2><p>A considered approach to common bone, joint and mobility concerns.</p></div>
           <div className="scope-list">
             {treatments.map((item) => <article className="scope-row" key={item.number}><span className="scope-number">{item.number}</span><div><small>{item.label}</small><h3>{item.title}</h3><p>{item.copy}</p></div><button type="button" className="scope-open" aria-haspopup="dialog" aria-label={`View details: ${item.title}`} onClick={() => setActiveTreatment(item)}><Arrow diagonal /></button></article>)}
           </div>

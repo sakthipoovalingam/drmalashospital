@@ -646,3 +646,132 @@ body { font-size: 16px; line-height: 1.6; }
 @media (max-width: 520px) {
   .brand-logo { width: 132px; max-height: 62px; }
 }
+
+
+/* Cleaner, more legible section labels */
+.section-label {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-bottom: 34px;
+  color: #5b5b5d;
+  font-family: var(--font);
+  font-size: clamp(12px, .95vw, 14px);
+  font-weight: 700;
+  letter-spacing: .105em;
+  line-height: 1.5;
+  text-transform: uppercase;
+}
+.section-label::before {
+  content: "";
+  display: inline-block;
+  flex: 0 0 27px;
+  width: 27px;
+  height: 3px;
+  border-radius: 3px;
+  background: #d71e00;
+}
+.section-label--light { color: rgba(255,255,255,.9); }
+.section-label--light::before { background: #d71e00; }
+@media (max-width: 600px) {
+  .section-label { font-size: 11px; letter-spacing: .075em; gap: 10px; margin-bottom: 26px; }
+  .section-label::before { flex-basis: 20px; width: 20px; }
+}
+
+/* ===== Final hierarchy and spacing refinement ===== */
+.section-label {
+  margin-bottom: 44px;
+  color: #56575a;
+  font-size: clamp(12px, 1vw, 14px);
+  font-weight: 700;
+  letter-spacing: .095em;
+  line-height: 1.55;
+}
+.section-label::before { width: 30px; flex-basis: 30px; height: 3px; }
+
+.welcome h2,
+.patient-first h2,
+.trust-heading h2,
+.scope-heading h2,
+.doctor-details h2,
+.visit-grid h2 {
+  font-weight: 700;
+  letter-spacing: -.045em;
+  line-height: 1.08;
+  text-wrap: balance;
+}
+.welcome h2,
+.patient-first h2,
+.trust-heading h2 { font-size: clamp(38px, 4.5vw, 60px); }
+.scope-heading h2 { font-size: clamp(42px, 5vw, 66px); }
+.doctor-details h2 { font-size: clamp(48px, 5.1vw, 70px); }
+.visit-grid h2 { font-size: clamp(54px, 6.8vw, 88px); }
+
+.welcome { padding-top: 132px; padding-bottom: 102px; }
+.welcome-grid { gap: clamp(48px, 8vw, 108px); }
+.welcome-copy { max-width: 560px; }
+.welcome-copy p:not(.lead) { margin-top: 18px; }
+.stats-row { margin-top: 66px; gap: 14px; }
+
+.doctor-details { padding-top: clamp(66px, 7vw, 96px); padding-bottom: clamp(66px, 7vw, 96px); }
+.doctor-details h2 { margin-top: 22px; margin-bottom: 18px; }
+.doctor-details > p { max-width: 500px; margin: 0 0 25px; }
+
+.patient-first,
+.trust-section {
+  padding: clamp(46px, 5.2vw, 70px) clamp(26px, 5vw, 64px);
+  border-radius: 26px;
+}
+.patient-first { margin-top: 76px; margin-bottom: 52px; }
+.trust-section { margin-bottom: 76px; }
+.patient-first-grid { gap: clamp(44px, 8vw, 100px); }
+.patient-first-copy { max-width: 570px; }
+.patient-first-copy p:not(.lead) { margin-top: 14px; }
+.approach-points { margin-top: 34px; padding-top: 24px; gap: 13px; line-height: 1.7; }
+.trust-grid { gap: clamp(44px, 8vw, 100px); }
+.trust-heading h2 { max-width: 520px; }
+.trust-content { max-width: 650px; }
+.trust-item { min-height: 74px; }
+.trust-item strong { font-size: 17px; line-height: 1.45; }
+.trust-note { margin-top: 30px; }
+
+.scope-inner { padding-top: 118px; padding-bottom: 126px; }
+.scope-heading { margin-bottom: 64px; gap: 64px; }
+.scope-row { padding-top: 31px; padding-bottom: 31px; }
+.scope-row h3 { line-height: 1.25; }
+.scope-row p { max-width: 700px; line-height: 1.8; }
+
+.visit-inner { padding-top: 112px; padding-bottom: 116px; }
+.visit-grid { gap: clamp(44px, 7vw, 84px); }
+.visit-grid > div:first-child > p { max-width: 500px; margin-top: 30px; }
+
+@media (max-width: 800px) {
+  .welcome { padding-top: 82px; padding-bottom: 76px; }
+  .section-label { margin-bottom: 30px; }
+  .patient-first { margin-top: 46px; margin-bottom: 38px; }
+  .trust-section { margin-bottom: 48px; }
+  .patient-first,
+  .trust-section { padding: 38px 24px; }
+  .doctor-details { padding: 58px 8vw 64px; }
+  .scope-inner { padding-top: 78px; padding-bottom: 84px; }
+  .scope-heading { margin-bottom: 38px; }
+  .scope-row { padding-top: 24px; padding-bottom: 24px; }
+  .visit-inner { padding-top: 80px; padding-bottom: 86px; }
+}
+
+@media (max-width: 520px) {
+  .welcome h2,
+  .patient-first h2,
+  .trust-heading h2 { font-size: clamp(36px, 10.5vw, 48px); }
+  .scope-heading h2 { font-size: clamp(39px, 11vw, 52px); }
+  .doctor-details h2 { font-size: 46px; }
+  .visit-grid h2 { font-size: clamp(50px, 13vw, 68px); }
+  .section-label { font-size: 10px; letter-spacing: .07em; gap: 9px; }
+  .section-label::before { width: 20px; flex-basis: 20px; }
+  .patient-first,
+  .trust-section { padding: 32px 19px; border-radius: 21px; }
+  .trust-item { min-height: 64px; }
+  .trust-item strong { font-size: 14px; }
+  .approach-points { font-size: 10px; gap: 8px; }
+  .scope-row p { font-size: 14px; }
+}
